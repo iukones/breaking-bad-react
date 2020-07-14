@@ -6,6 +6,8 @@
 // Global variables
 $colorBg: #000000;
 $colorText: #BADA55;
+$printColor: hsl(100, 100%, 60%);
+$printColorC: hsl(200, 100%, 60%);
 
 html {
   body {
@@ -57,9 +59,14 @@ html {
         grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
         & .card {
+          inline-size: 30vmin;
+          block-size: 30vmin;
+          border: 1vmin solid $printColor;
+          border-image-slice: 1;
+          border-image-source: conic-gradient($printColor, $printColorC, $printColor);
           cursor: pointer;
           background-color: transparent;
-          height: 300px;
+          height: 315px;
           perspective: 1000px;
           & h1 {
             font-size: 25px;
