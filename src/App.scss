@@ -56,17 +56,18 @@ html {
       }
       & .cards {
         display: grid;
+        // grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
         grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
         & .card {
-          inline-size: 30vmin;
+          // inline-size: 30vmin;
           block-size: 30vmin;
           border: 1vmin solid $printColor;
           border-image-slice: 1;
           border-image-source: conic-gradient($printColor, $printColorC, $printColor);
           cursor: pointer;
           background-color: transparent;
-          height: 315px;
+          height: 313px;
           perspective: 1000px;
           & h1 {
             font-size: 25px;
@@ -117,14 +118,23 @@ html {
             transform: rotateY(180deg);
           } */
         }
-        @media (max-width: 800px) {
+        @media (min-width: 1024px) {
           .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+          }
+        }
+        @media (min-width: 768px) {
+          .cards {
+            display: grid;
             grid-template-columns: repeat(2, 1fr);
           }
         }
         @media (max-width: 500px) {
           .cards {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
           }
         }
 
