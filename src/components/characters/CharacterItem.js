@@ -1,33 +1,33 @@
-import React from 'react'
+import { memo } from 'react';
 
-const CharacterItem = ({ item }) => {
-  // console.log(item);
-  return (
-    <div className='card'>
-      <div className='card-inner'>
-        <div className='card-front'>
-          <img src={ item.img } alt='Breaking character' />
-        </div>
-        <div className='card-back'>
-          <h1> { item.name } </h1>
-          <ul>
-            <li>
-              <p><strong>Nombre del actor:</strong> {item.portrayed}</p>
-            </li>
-            <li>
-              <p><strong>Apodo:</strong> {item.nickname}</p>
-            </li>
-            <li>
-              <p><strong>Cumpleaños:</strong> {item.birthday}</p>
-            </li>
-            <li>
-              <p><strong>Status:</strong> {item.status}</p>
-            </li>
-          </ul>
-        </div>
+const CharacterItem = memo(({ item }) => (
+  <div className="card">
+    <div className="card-inner">
+      <div className="card-front">
+        <img src={item.image} alt={item.name} loading="lazy" />
+      </div>
+      <div className="card-back">
+
+        <h1>{item.name}</h1>
+        <ul>
+          <li>
+            <strong>Especie:</strong> {item.species}
+          </li>
+          <li>
+            <strong>Tipo:</strong> {item.type || 'No especificado'}
+          </li>
+          <li>
+            <strong>Género:</strong> {item.gender}
+          </li>
+          <li>
+            <strong>Estado:</strong> {item.status}
+          </li>
+        </ul>
       </div>
     </div>
-  )
-}
+  </div>
+));
 
-export default CharacterItem
+CharacterItem.displayName = 'CharacterItem';
+
+export default CharacterItem;

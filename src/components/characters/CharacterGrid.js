@@ -1,13 +1,25 @@
-import React from 'react';
+import { memo } from 'react';
 import CharacterItem from './CharacterItem';
 
-const CharacterGrid = ({ items, isLoading }) => {
-  return isLoading ? (<h1>Loading...</h1>) : <section className='cards'>
-    { items.map(item => (
-      <CharacterItem key={ item.char_id } item={ item }>
-      </CharacterItem>
-    )) }
-  </section>
-}
+const CharacterGrid = memo(({ items, isLoading }) => {
+  if (isLoading) {
+    return <h1 className="center">Cargando...</h1>;
+  }
 
-export default CharacterGrid
+  if (items.length === 0) {
+    return <p className="center">No se encontraron personajes</p>;
+  }
+
+  return (
+    <section className="cards">
+
+      {items.map((item) => (
+        <CharacterItem key={item.id} item={item} />
+      ))}
+    </section>
+  );
+});
+
+CharacterGrid.displayName = 'CharacterGrid';
+
+export default CharacterGrid;
